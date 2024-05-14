@@ -18,13 +18,13 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             dockerImage = docker.build("kohiichan/cs304lab12:${env.BUILD_NUMBER}", "Dockerfile")
-        //         }
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build("kohiichan/cs304lab12:${env.BUILD_NUMBER}", "Dockerfile")
+                }
+            }
+        }
 
         // stage('Push Docker Image') {
         //     steps {
