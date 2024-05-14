@@ -36,8 +36,8 @@ pipeline {
             steps{
                 sh 'docker pull kohiichan/lab12_v1.0:latest'
                 sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
-                sh 'docker run -d -p 8083:8080 --name 1201 kohiichan/lab12_v1.0'
-                sh 'docker run -d -p 8084:8080 --name 1201 kohiichan/lab12_v1.0'
+                sh 'docker run -d -p 8083:8080 --name 1202 kohiichan/lab12_v1.0'
+                sh 'docker run -d -p 8084:8080 --name 1203 kohiichan/lab12_v1.0'
             }
         }
 
