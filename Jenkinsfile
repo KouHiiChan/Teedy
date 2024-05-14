@@ -21,7 +21,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("kohiichan/cs304lab12:${env.BUILD_NUMBER}", "Dockerfile .")
+                    dockerImage = docker.build("kohiichan/cs304lab12:${env.BUILD_NUMBER}", "Dockerfile")
                 }
             }
         }
