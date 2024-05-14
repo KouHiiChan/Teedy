@@ -18,23 +18,19 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             dockerImage = docker.build("kohiichan/cs304lab12:${env.BUILD_NUMBER}", "Dockerfile")
-        //         }
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t lab12 .'
+            }
+        }
 
-        // stage('Push Docker Image') {
-        //     steps {
-        //         script {
-        //             docker.withRegistry('', DOCKER_HUB_CREDENTIALS) {
-        //                 dockerImage.push()
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Push Docker Image') {
+            steps {
+                // sh 'docker login -u kohiichan -p hgyToLOVEru=7'
+                sh 'docker tag lab12 kohiichan/lab12_v1.0'
+                sh 'docker push kohiichan/lab12_v1.0'
+            }
+        }
 
     }
 
