@@ -35,9 +35,9 @@ pipeline {
         stage('Run containers'){
             steps{
                 sh 'docker pull kohiichan/lab12_v1.0:latest'
-                // sh 'docker stop 1201'
-                // sh 'docker stop 1202'
-                // sh 'docker stop 1203'
+                sh 'docker stop 1201'
+                sh 'docker stop 1202'
+                sh 'docker stop 1203'
                 sh 'docker rm 1201'
                 sh 'docker rm 1202'
                 sh 'docker rm 1203'
