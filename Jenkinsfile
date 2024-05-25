@@ -18,45 +18,52 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('K8s') {
             steps {
-                sh 'docker build -t lab12 .'
+                sh 'kubectl set image deployments/hello-node lab13=kohiichan/lab12_v1.0:latest'
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                // sh 'docker login -u kohiichan -p hgyToLOVEru=7'
-                sh 'docker tag lab12 kohiichan/lab12_v1.0'
-                sh 'docker push kohiichan/lab12_v1.0'
-            }
-        }
 
-        stage('Run containers'){
-            steps{
-                sh 'docker pull kohiichan/lab12_v1.0:latest'
-                sh 'docker stop 1201'
-                sh 'docker stop 1202'
-                sh 'docker stop 1203'
-                sh 'docker rm 1201'
-                sh 'docker rm 1202'
-                sh 'docker rm 1203'
-                sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
-                sh 'docker run -d -p 8083:8080 --name 1202 kohiichan/lab12_v1.0'
-                sh 'docker run -d -p 8084:8080 --name 1203 kohiichan/lab12_v1.0'
-                // sh 'docker start 1201'
-                // sh 'docker start 1202'
-                // sh 'docker start 1203'
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         sh 'docker build -t lab12 .'
+        //     }
+        // }
+
+        // stage('Push Docker Image') {
+        //     steps {
+        //         // sh 'docker login -u kohiichan -p hgyToLOVEru=7'
+        //         sh 'docker tag lab12 kohiichan/lab12_v1.0'
+        //         sh 'docker push kohiichan/lab12_v1.0'
+        //     }
+        // }
+
+        // stage('Run containers'){
+        //     steps{
+        //         sh 'docker pull kohiichan/lab12_v1.0:latest'
+        //         sh 'docker stop 1201'
+        //         sh 'docker stop 1202'
+        //         sh 'docker stop 1203'
+        //         sh 'docker rm 1201'
+        //         sh 'docker rm 1202'
+        //         sh 'docker rm 1203'
+        //         sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
+        //         sh 'docker run -d -p 8083:8080 --name 1202 kohiichan/lab12_v1.0'
+        //         sh 'docker run -d -p 8084:8080 --name 1203 kohiichan/lab12_v1.0'
+        //         // sh 'docker start 1201'
+        //         // sh 'docker start 1202'
+        //         // sh 'docker start 1203'
+        //     }
+        // }
 
     }
 
-    post {
-            always {
-                archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
-                archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
-                archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
-            }
-        }
+    // post {
+    //         always {
+    //             archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
+    //             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
+    //             archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
+    //         }
+    //     }
 }
