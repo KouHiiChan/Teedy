@@ -52,9 +52,9 @@ pipeline {
 
         stage('K8s') {
             steps {
-                sh 'docker stop 1201'
-                sh 'docker rm 1201'
-                sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
+                // sh 'docker stop 1201'
+                // sh 'docker rm 1201'
+                // sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
                 sh 'kubectl set image deployments/hello-node hello-node=kohiichan/lab12_v1.0:latest'
             }
         }
