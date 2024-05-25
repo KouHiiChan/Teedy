@@ -20,7 +20,7 @@ pipeline {
 
         stage('K8s') {
             steps {
-                sh 'kubectl set image deployments/hello-node lab13=kohiichan/lab12_v1.0:latest'
+                sh 'kubectl set image deployments/hello-node 1201=kohiichan/lab12_v1.0:latest'
             }
         }
 
