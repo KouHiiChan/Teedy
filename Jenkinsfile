@@ -20,7 +20,6 @@ pipeline {
 
         stage('K8s') {
             steps {
-                sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
                 sh 'kubectl set image deployments/hello-node 1201=kohiichan/lab12_v1.0:latest'
             }
         }
