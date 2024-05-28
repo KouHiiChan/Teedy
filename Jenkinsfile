@@ -52,9 +52,9 @@ pipeline {
 
         stage('K8s') {
             steps {
-                // sh 'docker stop 1201'
-                // sh 'docker rm 1201'
-                // sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
+                sh 'docker stop 1201'
+                sh 'docker rm 1201'
+                sh 'docker run -d -p 8082:8080 --name 1201 kohiichan/lab12_v1.0'
                 sh 'kubectl set image deployments/hello-node docs=kohiichan/lab12_v1.0:latest'
                 sh 'kubectl delete service hello-node'
                 sh 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080'
